@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: carelink-api
+    runtime: node
+    rootDir: CareLink-backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_PREFIX
+        value: /api/v1
+      - key: API_VERSION
+        value: v1
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://carelink-web.onrender.com
+
+  - type: web
+    name: carelink-web
+    runtime: static
+    rootDir: CareLink-frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://carelink-api.onrender.com/api/v1
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -1,0 +1,135 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const userSchema = new mongoose.Schema(
+  {
+    firstName: { 
+      type: String, 
+      required: [true, 'First name is required'], 
+      trim: true 
+    },
+    lastName: { 
+      type: String, 
+      required: [true, 'Last name is required'], 
+      trim: true 
+    },
+    email: { 
+      type: String, 
+      required: [true, 'Email is required'], 
+      unique: true, 
+      lowercase: true, 
+      trim: true,
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email']
+    },
+    phone: { 
+      type: String, 
+      trim: true,
+      match: [/^\d{10}$/, 'Phone must be 10 digits']
+    },
+    password: { 
+      type: String, 
+      required: [true, 'Password is required'],
+      minlength: [8, 'Password must be at least 8 characters'],
+      select: false // Don't return password by default
+    },
+    profilePicture: { 
+      type: String, 
+      default: null 
+    },
+    avatar: {
+      type: String,
+      default: null
+    },
+    role: { 
+      type: String, 
+      enum: ['patient', 'doctor', 'admin'], 
+      default: 'patient' 
+    },
+    isVerified: { 
+      type: Boolean, 
+      default: false 
+    },
+    verified: { 
+      type: Boolean, 
+      default: false 
+    },
+    verificationToken: { 
+      type: String, 
+      select: false 
+    },
+    verificationTokenExpires: { 
+      type: Date, 
+      select: false 
+    },
+    // Google OAuth fields
+    googleId: {
+      type: String,
+      trim: true
+    },
+    // OTP for forgot password flow (3-step process)
+    resetOtp: {
+      type: String,
+      select: false
+    },
+    resetOtpExpires: {
+      type: Date,
+      select: false
+    },
+    // Legacy token fields (keeping for backward compatibility)
+    resetPasswordToken: { 
+      type: String, 
+      select: false 
+    },
+    resetPasswordExpires: { 
+      type: Date, 
+      select: false 
+    },
+    lastLogin: { 
+      type: Date, 
+      default: null 
+    },
+  },
+  { timestamps: true }
+);
+
+// Only enforce uniqueness for real Google IDs (string values).
+// This avoids duplicate-key errors for email/password users with no googleId.
+userSchema.index(
+  { googleId: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { googleId: { $type: 'string' } }
+  }
+);
+
+// Keep phone unique only when a phone number is present.
+userSchema.index(
+  { phone: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { phone: { $type: 'string' } }
+  }
+);
+
+// Hash password before saving
+userSchema.pre('save', async function(next) {
+  // Only hash if password has been modified
+  if (!this.isModified('password')) {
+    return next();
+  }
+  
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Method to compare passwords
+userSchema.methods.matchPassword = async function(enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+module.exports = mongoose.model('User', userSchema);

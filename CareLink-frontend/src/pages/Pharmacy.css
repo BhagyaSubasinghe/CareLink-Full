@@ -1,0 +1,555 @@
+/* Pharmacy Page Styles */
+
+.pharmacy-root {
+  padding: 32px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.pharmacy-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 48px;
+  padding: 40px;
+  background: linear-gradient(135deg, #f0fdfc 0%, #ffffff 100%);
+  border-radius: 16px;
+  border: 1px solid #d1faf8;
+}
+
+.hero-content {
+  padding: 20px 0;
+}
+
+.hero-title {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.hero-description {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Upload Prescription Box */
+.upload-prescription-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  border: 2px dashed #0ea5a9;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(14, 165, 169, 0.08);
+}
+
+.upload-prescription-box:hover {
+  border-color: #0d9097;
+  box-shadow: 0 8px 24px rgba(14, 165, 169, 0.15);
+  transform: translateY(-2px);
+}
+
+.upload-icon {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: #f0fdfc;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upload-title {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.upload-description {
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.upload-button {
+  min-width: 180px;
+  padding: 10px 32px !important;
+  text-transform: none;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pharmacy-hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .upload-prescription-box {
+    padding: 32px 20px;
+  }
+}
+
+/* Tabs Styling */
+.pharmacy-tabs {
+  background: #fff;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 32px;
+  border-radius: 8px 8px 0 0;
+}
+
+.pharmacy-tabs .MuiTab-root {
+  font-weight: 500;
+  text-transform: none;
+  font-size: 1rem;
+  padding: 12px 16px;
+  min-width: auto;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.pharmacy-tabs .MuiTab-root.Mui-selected {
+  color: #0ea5a9;
+  font-weight: 600;
+}
+
+.pharmacy-tabs .MuiTabs-indicator {
+  background-color: #0ea5a9;
+  height: 3px;
+}
+
+/* Content Section */
+.pharmacy-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.availability-section {
+  background: #ffffff;
+  border: 1px solid #dbe7e6;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.06);
+}
+
+.availability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.medicine-search-panel {
+  background: #f8fffe;
+  border: 1px solid #dbe7e6;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.medicine-search-form {
+  display: grid;
+  gap: 12px;
+}
+
+.medicine-search-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.check-availability-button {
+  background-color: #0f766e !important;
+}
+
+.check-availability-button:hover {
+  background-color: #115e59 !important;
+}
+
+.medicine-search-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.medicine-search-field .MuiOutlinedInput-root {
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.selected-medicine-card {
+  border-radius: 14px;
+  border: 1px solid #0ea5a9;
+  background: linear-gradient(135deg, #f0fdfc 0%, #ffffff 100%);
+}
+
+.selected-medicine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.availability-summary-card {
+  height: 100%;
+  border-radius: 14px;
+  border: 1px solid #dbe7e6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.availability-card {
+  height: 100%;
+  border-radius: 14px;
+  border: 1px solid #dbe7e6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.availability-card:hover {
+  transform: translateY(-2px);
+  border-color: #0ea5a9;
+  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.12);
+}
+
+.availability-card-selected {
+  border-color: #0ea5a9;
+  box-shadow: 0 12px 28px rgba(15, 118, 110, 0.16);
+}
+
+.availability-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Search Section */
+.search-section {
+  margin-bottom: 28px;
+  background: #f9fafb;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.medicine-search-field {
+  margin-bottom: 16px;
+}
+
+.medicine-search-field .MuiOutlinedInput-root {
+  background: white;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.medicine-search-field .MuiOutlinedInput-input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+/* Filter Chips */
+.filter-chips {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-chips .MuiChip-root {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chips .MuiChip-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.filter-chips .MuiChip-filledPrimary {
+  background-color: #0ea5a9;
+  color: white;
+}
+
+.sort-select {
+  min-width: 180px;
+}
+
+/* Medicines Grid */
+.medicines-grid {
+  margin-top: 28px;
+}
+
+/* Medicine Card */
+.medicine-card {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.medicine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-color: #0ea5a9;
+}
+
+.medicine-card .MuiCardActions-root {
+  padding: 12px 16px;
+  gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.medicine-card .MuiCardContent-root {
+  padding: 16px;
+}
+
+/* Availability Card */
+.availability-card {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.availability-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.availability-card .MuiCardContent-root {
+  padding: 20px;
+}
+
+/* Receipt Uploader */
+.receipt-uploader {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.receipt-uploader:hover {
+  background: #f0fdfc;
+}
+
+/* Pharmacy Card */
+.pharmacy-card {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.pharmacy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-color: #0ea5a9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pharmacy-root {
+    padding: 20px 12px;
+  }
+
+  .pharmacy-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .header-title {
+    font-size: 1.75rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions button {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .pharmacy-tabs {
+    margin-bottom: 20px;
+  }
+
+  .pharmacy-tabs .MuiTab-root {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .search-section {
+    padding: 16px;
+  }
+
+  .filter-chips {
+    gap: 8px;
+  }
+
+  .sort-select {
+    min-width: 140px;
+  }
+
+  .medicine-card .MuiCardActions-root {
+    grid-template-columns: 1fr;
+  }
+
+  .medicines-grid {
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pharmacy-root {
+    padding: 16px 8px;
+  }
+
+  .header-title {
+    font-size: 1.25rem;
+  }
+
+  .pharmacy-tabs .MuiTab-root {
+    font-size: 0.75rem;
+    padding: 8px 10px;
+  }
+
+  .search-section {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+
+  .filter-chips {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .filter-chips > * {
+    width: 100%;
+  }
+
+  .sort-select {
+    min-width: 100%;
+  }
+
+  .medicine-search-field .MuiOutlinedInput-root {
+    font-size: 0.95rem;
+  }
+}
+
+/* Loading State */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px dashed #e5e7eb;
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  color: #d1d5db;
+  margin-bottom: 16px;
+}
+
+/* Utility Classes */
+.medicine-in-stock {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.medicine-limited-stock {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.medicine-low-stock {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.medicine-price {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .pharmacy-tabs,
+  .header-actions,
+  .filter-chips {
+    display: none !important;
+  }
+
+  .medicine-card {
+    page-break-inside: avoid;
+  }
+}
